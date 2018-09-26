@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "json:target/test-results/web/cucumber-report.json"
         },
         features = {"src/test/resources/cucumber/features/web"},
-        glue = {"cucumber.web.steps"}
+        glue = {"cucumber.web.steps", "cucumber.web.support"}
 )
 public class CucumberWebTestRunner {
 }

@@ -3,6 +3,8 @@ package driver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.File;
+
 import static config.Constants.CHROME;
 import static config.Constants.FIREFOX;
 
@@ -34,7 +36,16 @@ public interface DriverSetup {
 
         String osType = System.getProperty("os.name");
         String cwd = System.getProperty("user.dir");
-        String driverPath = cwd + "/src/main/resources/drivers/";
+        String driverPath = cwd + File.separator
+                + "src"
+                + File.separator
+                + "main"
+                + File.separator
+                + "resources"
+                + File.separator
+                + "drivers"
+                + File.separator;
+
 
         switch (driverName.toLowerCase()) {
             case CHROME:
