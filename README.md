@@ -186,8 +186,20 @@ TODO
 ## Reporting 
 TODO 
 * Discuss various reporting options - both custom and canned reports
-* 
+
+## UI Element Selectors
+In order to build UI automation, you'll need to inspect the application source to find unique identifiers for Selenium/Appium to interact with elements. 
+
+#### Web Tools
+Chrome comes with 'Developer Tools' which are an excellent feature for inspecting web elements. 
+Open up Chrome, click 'Help' in the toolbar and search 'Developer Tools'. For more information, see [devtools documentation](https://developer.chrome.com/home/devtools-pillar).
+ 
+#### Mobile Tools
+Appium provides a desktop application designed specifically for inspecting Android and iOS UI elements. 
+It is called Appium Desktop. For instructions and download, go [here](https://github.com/appium/appium-desktop)
+
 
 ## Docs
 TODO - add wiki pages for documentation and add a list of links to the pages.
+    
     
