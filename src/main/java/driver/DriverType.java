@@ -19,7 +19,15 @@ import org.openqa.selenium.safari.SafariOptions;
 
 import java.util.HashMap;
 
-public enum DriverType {
+/**
+ * DriverType is an enum for defining the type of Selenium or Appium driver.
+ * It is called by DriverFactory, where you can set driver capabilities specific
+ * to the mobile device or browser under test. For example, when setting DriverType.ANDROID
+ * you can specify the platformVersion and deviceName as DesiredCapabilities. Also, any
+ * capabilities that are always needed for a specific DriverType can be stored within the
+ * enum getDriverObject() method.
+ */
+public enum DriverType implements DriverSetup {
 
     CHROME {
         @Override
@@ -27,8 +35,9 @@ public enum DriverType {
             HashMap<String, Object> chromePreferences = new HashMap<>();
             ChromeOptions options = new ChromeOptions();
             options.merge(capabilities);
+            options.addArguments("--start-maximized");
             options.setExperimentalOption("prefs", chromePreferences);
-
+            System.setProperty("webdriver.chrome.driver", getDriverBinaryPath("chrome"));
             return new ChromeDriver(options);
         }
     },
@@ -37,7 +46,7 @@ public enum DriverType {
         public RemoteWebDriver getDriverObject(DesiredCapabilities capabilities) {
             FirefoxOptions options = new FirefoxOptions();
             options.merge(capabilities);
-
+            System.setProperty("webdriver.gecko.driver", getDriverBinaryPath("firefox"));
             return new FirefoxDriver(options);
         }
     },
@@ -74,7 +83,6 @@ public enum DriverType {
     ANDROID {
         @Override
         public RemoteWebDriver getDriverObject(DesiredCapabilities capabilities) {
-            capabilities.setCapability("platformName", "android");
             capabilities.setCapability("unicodeKeyboard", true);
             capabilities.setCapability("resetKeyboard", true);
             return new AndroidDriver<MobileElement>(capabilities);
@@ -83,13 +91,9 @@ public enum DriverType {
     IOS {
         @Override
         public RemoteWebDriver getDriverObject(DesiredCapabilities capabilities) {
-            capabilities.setCapability("platformName", "ios");
             capabilities.setCapability("automationName", "XCUITEST");
             return new IOSDriver<MobileElement>(capabilities);
         }
     };
-
-    //template method
-    public abstract RemoteWebDriver getDriverObject(DesiredCapabilities capabilities);
 
 }

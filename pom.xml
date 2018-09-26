@@ -16,6 +16,10 @@
         <junit.version>4.12</junit.version>
         <maven.compiler.version>3.3</maven.compiler.version>
         <selenium.version>3.14.0</selenium.version>
+        <selenium.driver.dir>${project.basedir}/src/main/resources/drivers</selenium.driver.dir>
+        <default.thread.count>1</default.thread.count>
+        <default.browser>chrome</default.browser>
+        <default.mobile.platform>android</default.mobile.platform>
     </properties>
 
     <dependencies>
@@ -55,7 +59,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -70,6 +78,23 @@
                     <target>${java.version}</target>
                     <compilerArgument>-Werror</compilerArgument>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <threadCount>${default.thread.count}</threadCount>
+                    <systemPropertyVariables>
+                        <web.browser>${default.browser}</web.browser>
+                        <mobile.platform>${default.mobile.platform}</mobile.platform>
+                    </systemPropertyVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
