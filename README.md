@@ -103,10 +103,26 @@ In order to run cucumber tests via the IntelliJ IDE, below are the steps. This i
     
 
 ### TestNG
-TODO 
+There are two core concepts in TestNG: `testng.xml` and test classes. `testng.mxl` is the driving file that defines
+tests to be run. Tests can be run in groups with a number of tags and annotations. Although less readable than cucumber, it's
+efficient for those more seasoned in code. The test classes can each house multiple test cases, separated by tags. 
+In this solution, `testng.xml` file and it's associated classes can be found in the
+src/test/java/testng folder.
 
 ##### Running TestNG Tests via IntelliJ
-TODO
+In order to run TestNG tests via the IntelliJ IDE, below are the steps. This is for web tests, but it is the same process for API/Mobile TestNG tests. 
+
+1. Open IntelliJ
+2. Import the `java-automation-accelerator` project as an existing Maven project
+3. Open the IntelliJ terminal: View > Tool Windows > Terminal 
+4. Clean and install the Maven dependencies
+   ```bash 
+    mvn clean install
+   ```
+5. Ensure the install finishes with SUCCESS. 
+6. From the configurations drop down at the top right of the IntelliJ window, select TestNG.
+7. Click the green play button next to the dropdown.
+8. Which test cases are being run can be altered in the testng.xml file.
 
 ##### Running TestNG Tests via Command Line
 TODO

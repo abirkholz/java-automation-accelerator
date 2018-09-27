@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "Suite">
+
+    <test name = "All of the tests">
+        <classes>
+            <class name = "testng.Default"/>
+            <class name = "testng.DefaultTwo"/>
+        </classes>
+        <!-- <packages>
+                <package name = "testng"/>
+             </packages> -->
+    </test>
+
+    <test name = "Only first test of Default">
+        <classes>
+            <class name = "testng.Default">
+                <methods>
+                    <exclude name = "demoTwo"/>
+                    <!-- <include name = "demo"/> -->
+                    <!-- <exclude name = "demoT.*"/> -->
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
