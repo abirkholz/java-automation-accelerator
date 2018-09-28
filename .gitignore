@@ -14,7 +14,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-.test-output
+/test-output/
 
 # External tool builders
 .externalToolBuilders/
@@ -60,3 +60,4 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+/target/
