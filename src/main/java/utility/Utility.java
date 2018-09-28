@@ -10,7 +10,7 @@ public class Utility {
 		return gson.toJson(jsonClass);
 	}
 	
-	public static <T> Object fromJson(String jsonString, Class<T> jsonClass) throws JsonSyntaxException {
+	public static <T> T fromJson(String jsonString, Class<T> jsonClass) throws JsonSyntaxException {
 		Gson gson = new Gson();
 		return gson.fromJson(jsonString, jsonClass);
 	}
