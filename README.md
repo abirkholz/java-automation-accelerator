@@ -1,4 +1,4 @@
-# java-automation-acceleator
+# java-automation-accelerator
 Automation accelerator framework written in java. This project demonstrates a variety of automation examples including: 
 web UI, mobile UI, API automation, database interaction and various automation test runners (Cucumber, TestNG, etc).
 
