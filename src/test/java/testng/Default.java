@@ -9,17 +9,32 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
 public class Default {
 	private String baseUrl = "https://jsonplaceholder.typicode.com/"; 
 
-    @BeforeTest
+	@DataProvider(name = "DataTest")
+	public static Object[][] demoTestUsers() {
+		return new Object[][] { 
+			{ "testuser_1", "Test1@email.com", "Test Name 1" }, 
+			{ "testuser_2", "Test2@email.com", "Test Name 2" }
+		};
+	}
+	
+	@BeforeTest
     public void demo (){
         System.out.println("Hello, this will happen first");
     }
+	
+	@Test(dataProvider = "DataTest")
+	public void dataDemo(String userId, String email, String name) {
+		System.out.println("Name: " + name + " UserId: " + userId + " email: " + email);
+	}
+    
 
     @Test
-    public void demoTwo (){
+    public void demoTwo(){
         System.out.println("Hello again");
     }
     
